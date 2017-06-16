@@ -14,12 +14,12 @@
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="5*"/>
-            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="auto"/>
         </Grid.ColumnDefinitions>
         <Label Name="PageTitle" Grid.Row="1" Grid.Column="0" Margin="10,0,0,0" Foreground="White">
             ページタイトル
         </Label>
-        <Image Grid.Row="1" Grid.Column="1" Source="pack://siteoforigin:,,,/Images/TestLogo.png" Margin="0,0,10,0"/>
+        <Image Name="LogoImage" Grid.Row="1" Grid.Column="1" Source="Images/TestLogo.png" Visibility="Visible" Width="100" Margin="0,0,10,0"/>
     </Grid>
 </UserControl>
