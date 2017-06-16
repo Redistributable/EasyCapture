@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{651D11F2-57C4-44D8-A3CF-208AA154EC47}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>Redefinable.Applications.EasyCapture</RootNamespace>
-    <AssemblyName>EasyCapture</AssemblyName>
+    <ProjectGuid>{FA012759-B946-4939-8D35-157168CAE43D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Redefinable.Applications.EasyCapture.View</RootNamespace>
+    <AssemblyName>EasyCapture.View</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,20 +30,33 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <ItemGroup>
-    <Compile Include="MainClass.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\EasyCapture.View\EasyCapture.View.csproj">
-      <Project>{fa012759-b946-4939-8d35-157168cae43d}</Project>
-      <Name>EasyCapture.View</Name>
-    </ProjectReference>
-  </ItemGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
     <Reference Include="System.Xaml" />
     <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="XamlTest\TestControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="XamlTest\TestWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="XamlTest\TestControl.xaml.cs">
+      <DependentUpon>TestControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="XamlTest\TestWindow.xaml.cs">
+      <DependentUpon>TestWindow.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
