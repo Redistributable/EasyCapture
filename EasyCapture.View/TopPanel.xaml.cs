@@ -23,5 +23,12 @@ namespace Redefinable.Applications.EasyCapture.View
         {
             InitializeComponent();
         }
+
+
+        public string Text
+        {
+            get { return (string) this.PageTitle.Content; }
+            set { this.PageTitle.Content = value; }
+        }
     }
 }

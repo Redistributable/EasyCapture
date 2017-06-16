@@ -11,8 +11,7 @@
             <RowDefinition Height="auto"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <local:TopPanel Grid.Row="0">
-            
+        <local:TopPanel Grid.Row="0" Text="スタート">
         </local:TopPanel>
     </Grid>
 </Window>
