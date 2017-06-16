@@ -46,6 +46,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="SettingMainPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="StartMainPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -71,6 +75,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SettingMainPanel.xaml.cs">
+      <DependentUpon>SettingMainPanel.xaml</DependentUpon>
     </Compile>
     <Compile Include="StartMainPanel.xaml.cs">
       <DependentUpon>StartMainPanel.xaml</DependentUpon>

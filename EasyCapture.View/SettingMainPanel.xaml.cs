@@ -15,21 +15,13 @@ using System.Windows.Shapes;
 namespace Redefinable.Applications.EasyCapture.View
 {
     /// <summary>
-    /// MainWindow.xaml の相互作用ロジック
+    /// SettingMainPanel.xaml の相互作用ロジック
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class SettingMainPanel : UserControl
     {
-        public MainWindow()
+        public SettingMainPanel()
         {
             InitializeComponent();
-
-            using (System.IO.MemoryStream ms = new System.IO.MemoryStream())
-            {
-                var icon = System.Drawing.Icon.ExtractAssociatedIcon(System.Reflection.Assembly.GetEntryAssembly().Location);
-                icon.Save(ms);
-                ms.Seek(0, System.IO.SeekOrigin.Begin);
-                this.Icon = BitmapFrame.Create(ms);
-            }
         }
     }
 }

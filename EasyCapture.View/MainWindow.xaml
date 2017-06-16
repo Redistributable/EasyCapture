@@ -5,15 +5,14 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Redefinable.Applications.EasyCapture.View"
              mc:Ignorable="d"
-             d:DesignHeight="350" d:DesignWidth="520" Width="520" Height="350" MinWidth="520" MinHeight="350">
+             d:DesignHeight="350" d:DesignWidth="520" Width="520" Height="350" MinWidth="520" MinHeight="350" MaxWidth="700" MaxHeight="500">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        
-        <local:TopPanel Grid.Row="0" Text="">
-        </local:TopPanel>
+
+        <local:TopPanel Grid.Row="0" Text="" />
 
         <local:StartMainPanel Grid.Row="1" />
 
