@@ -48,6 +48,7 @@ namespace Redefinable.Applications.EasyCapture.View
             }
 
             this.Closing += MainWindow_Closing;
+            this.WindowStartMainPanel.RectCaptureButtonClick += WindowStartMainPanel_RectCaptureButtonClick;
             this.WindowStartMainPanel.SettingButtonClick += WindowStartMainPanel_SettingButtonClick;
             this.WindowStartMainPanel.ExitButtonClick += (sender, e) => { this.finish(); };
             this.WindowSubpageBottomBox.PrevButtonClick += WindowSubpageBottomBox_PrevButtonClick;
@@ -61,6 +62,19 @@ namespace Redefinable.Applications.EasyCapture.View
 
             if (!this.isFinished)
                 e.Cancel = true;
+        }
+
+        private void WindowStartMainPanel_RectCaptureButtonClick(object sender, RoutedEventArgs e)
+        {
+            this.WindowStartMainPanel.Visibility = Visibility.Hidden;
+            this.WindowRectCaptureMainPanel.Visibility = Visibility.Visible;
+
+            this.WindowSubpageBottomBox.Visibility = Visibility.Visible;
+
+            this.WindowTopPanel.Text = "領域を指定してキャプチャ";
+
+            this.currentPage = MainWindowPage.RectCapture;
+            this.currentPageCount++;
         }
 
         private void WindowStartMainPanel_SettingButtonClick(object sender, RoutedEventArgs e)
@@ -89,6 +103,7 @@ namespace Redefinable.Applications.EasyCapture.View
                 // トップページに戻す
                 this.WindowStartMainPanel.Visibility = Visibility.Visible;
 
+                this.WindowRectCaptureMainPanel.Visibility = Visibility.Hidden;
                 this.WindowSettingMainPanel.Visibility = Visibility.Hidden;
 
                 this.WindowSubpageBottomBox.Visibility = Visibility.Collapsed;
