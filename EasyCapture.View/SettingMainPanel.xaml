@@ -7,5 +7,16 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="520">
     <Grid Background="white">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0">
+            京成
+        </Label>
     </Grid>
 </UserControl>

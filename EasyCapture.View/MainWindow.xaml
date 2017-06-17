@@ -12,9 +12,11 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <local:TopPanel Grid.Row="0" Text="" />
+        <local:TopPanel x:Name="WindowTopPanel" Grid.Row="0" Text="" />
 
-        <local:StartMainPanel Grid.Row="1" />
+        <local:StartMainPanel x:Name="WindowStartMainPanel" Grid.Row="1" />
+
+        <local:SettingMainPanel x:Name="WindowSettingMainPanel" Grid.Row="1" Visibility="Hidden" />
 
     </Grid>
 </Window>

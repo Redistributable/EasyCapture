@@ -30,6 +30,15 @@ namespace Redefinable.Applications.EasyCapture.View
                 ms.Seek(0, System.IO.SeekOrigin.Begin);
                 this.Icon = BitmapFrame.Create(ms);
             }
+
+            this.WindowStartMainPanel.SettingButtonClick += WindowStartMainPanel_SettingButtonClick;
+        }
+
+        private void WindowStartMainPanel_SettingButtonClick(object sender, RoutedEventArgs e)
+        {
+            Console.WriteLine("イベントが発生しました。");
+            this.WindowStartMainPanel.Visibility = Visibility.Hidden;
+            this.WindowSettingMainPanel.Visibility = Visibility.Visible;
         }
     }
 }

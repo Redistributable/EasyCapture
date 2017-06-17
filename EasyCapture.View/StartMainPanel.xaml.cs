@@ -22,6 +22,38 @@ namespace Redefinable.Applications.EasyCapture.View
         public StartMainPanel()
         {
             InitializeComponent();
+
+            // イベントの初期化
+            this.RectCaptureButtonClick = delegate { };
+            this.WindowCaptureButtonClick = delegate { };
+            this.SettingButtonClick = delegate { };
+            this.ExitButtonClick = delegate { };
+
+            this.RectCaptureButton.Click += this.RectCaptureButtonClick;
+            this.WindowCaptureButton.Click += this.WindowCaptureButtonClick;
+            this.SettingButton.Click += this.SettingButtonClick;
+            this.ExitButton.Click += this.ExitButtonClick;
         }
+
+
+        /// <summary>
+        /// 「領域を指定してキャプチャ」がクリックされたときに発生します。
+        /// </summary>
+        public event RoutedEventHandler RectCaptureButtonClick;
+
+        /// <summary>
+        /// 「ウィンドウを選択してキャプチャ」がクリックされたときに発生します。
+        /// </summary>
+        public event RoutedEventHandler WindowCaptureButtonClick;
+
+        /// <summary>
+        /// 「キャプチャ設定」がクリックされたときに発生します。
+        /// </summary>
+        public event RoutedEventHandler SettingButtonClick;
+
+        /// <summary>
+        /// 「終了」がクリックされたときに発生します。
+        /// </summary>
+        public event RoutedEventHandler ExitButtonClick;
     }
 }

@@ -18,9 +18,9 @@
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
-        <Button Margin="30, 30, 0, 0" Grid.Row="0" Grid.Column="0">領域を指定してキャプチャ</Button>
-        <Button Margin="0, 30, 30, 0" Grid.Row="0" Grid.Column="2">ウィンドウを選択してキャプチャ</Button>
-        <Button Margin="30, 0, 0, 30" Grid.Row="2" Grid.Column="0">キャプチャ設定</Button>
-        <Button Margin="0, 0, 30, 30" Grid.Row="2" Grid.Column="2">終了</Button>
+        <Button Name="RectCaptureButton" Margin="30, 30, 0, 0" Grid.Row="0" Grid.Column="0">領域を指定してキャプチャ</Button>
+        <Button Name="WindowCaptureButton" Margin="0, 30, 30, 0" Grid.Row="0" Grid.Column="2">ウィンドウを選択してキャプチャ</Button>
+        <Button Name="SettingButton" Margin="30, 0, 0, 30" Grid.Row="2" Grid.Column="0">キャプチャ設定</Button>
+        <Button Name="ExitButton" Margin="0, 0, 30, 30" Grid.Row="2" Grid.Column="2">終了</Button>
     </Grid>
 </UserControl>
