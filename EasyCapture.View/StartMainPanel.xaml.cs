@@ -24,36 +24,47 @@ namespace Redefinable.Applications.EasyCapture.View
             InitializeComponent();
 
             // イベントの初期化
-            this.RectCaptureButtonClick = delegate { };
-            this.WindowCaptureButtonClick = delegate { };
-            this.SettingButtonClick = delegate { };
-            this.ExitButtonClick = delegate { };
-
-            this.RectCaptureButton.Click += this.RectCaptureButtonClick;
-            this.WindowCaptureButton.Click += this.WindowCaptureButtonClick;
-            this.SettingButton.Click += this.SettingButtonClick;
-            this.ExitButton.Click += this.ExitButtonClick;
+            this.RectCaptureButtonClick += delegate { };
+            this.WindowCaptureButtonClick += delegate { };
+            this.SettingButtonClick += delegate { };
+            this.ExitButtonClick += delegate { };
         }
 
 
         /// <summary>
         /// 「領域を指定してキャプチャ」がクリックされたときに発生します。
         /// </summary>
-        public event RoutedEventHandler RectCaptureButtonClick;
+        public event RoutedEventHandler RectCaptureButtonClick
+        {
+            add { this.RectCaptureButton.Click += value; }
+            remove { this.RectCaptureButton.Click -= value; }
+        }
 
         /// <summary>
         /// 「ウィンドウを選択してキャプチャ」がクリックされたときに発生します。
         /// </summary>
-        public event RoutedEventHandler WindowCaptureButtonClick;
+        public event RoutedEventHandler WindowCaptureButtonClick
+        {
+            add { this.WindowCaptureButton.Click += value; }
+            remove { this.WindowCaptureButton.Click -= value; }
+        }
 
         /// <summary>
         /// 「キャプチャ設定」がクリックされたときに発生します。
         /// </summary>
-        public event RoutedEventHandler SettingButtonClick;
+        public event RoutedEventHandler SettingButtonClick
+        {
+            add { this.SettingButton.Click += value; }
+            remove { this.SettingButton.Click -= value; }
+        }
 
         /// <summary>
         /// 「終了」がクリックされたときに発生します。
         /// </summary>
-        public event RoutedEventHandler ExitButtonClick;
+        public event RoutedEventHandler ExitButtonClick
+        {
+            add { this.ExitButton.Click += value; }
+            remove { this.ExitButton.Click -= value; }
+        }
     }
 }
