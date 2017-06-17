@@ -54,6 +54,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="SubpageBottomBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="TopPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -81,6 +85,9 @@
     </Compile>
     <Compile Include="StartMainPanel.xaml.cs">
       <DependentUpon>StartMainPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SubpageBottomBox.xaml.cs">
+      <DependentUpon>SubpageBottomBox.xaml</DependentUpon>
     </Compile>
     <Compile Include="TopPanel.xaml.cs">
       <DependentUpon>TopPanel.xaml</DependentUpon>

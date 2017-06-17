@@ -19,6 +19,10 @@ namespace Redefinable.Applications.EasyCapture.View
     /// </summary>
     public partial class MainWindow : Window
     {
+        private MainWindowPage currentPage;
+        private int currentPageCount;
+
+
         public MainWindow()
         {
             InitializeComponent();
@@ -32,13 +36,69 @@ namespace Redefinable.Applications.EasyCapture.View
             }
 
             this.WindowStartMainPanel.SettingButtonClick += WindowStartMainPanel_SettingButtonClick;
+            this.WindowSubpageBottomBox.PrevButtonClick += WindowSubpageBottomBox_PrevButtonClick;
         }
+
 
         private void WindowStartMainPanel_SettingButtonClick(object sender, RoutedEventArgs e)
         {
-            Console.WriteLine("イベントが発生しました。");
+            //Console.WriteLine("イベントが発生しました。");
+
             this.WindowStartMainPanel.Visibility = Visibility.Hidden;
             this.WindowSettingMainPanel.Visibility = Visibility.Visible;
+
+            this.WindowSubpageBottomBox.Visibility = Visibility.Visible;
+
+            this.currentPage = MainWindowPage.Setting;
+            this.currentPageCount++;
         }
+        
+        private void WindowSubpageBottomBox_PrevButtonClick(object sender, RoutedEventArgs e)
+        {
+            this.currentPageCount--;
+
+            if (this.currentPageCount < 0)
+                throw new Exception("UIエラーが発生しました。ページカウントが負の値を示しています。");
+            else if (this.currentPageCount == 0)
+            {
+                // トップページに戻す
+                this.WindowStartMainPanel.Visibility = Visibility.Visible;
+
+                this.WindowSettingMainPanel.Visibility = Visibility.Hidden;
+
+                this.WindowSubpageBottomBox.Visibility = Visibility.Collapsed;
+
+                this.currentPage = MainWindowPage.Start;
+            }
+            else
+            {
+                // 各モード内で１つ前のページに戻す
+                switch (this.currentPage)
+                {
+                    case MainWindowPage.RectCapture:
+                        {
+                            break;
+                        }
+                    case MainWindowPage.WindowCapture:
+                        {
+                            break;
+                        }
+                    case MainWindowPage.Setting:
+                        {
+                            break;
+                        }
+                    default:
+                        throw new Exception("UIエラーが発生しました。ページモードの種類を示す値が正しくありません。");
+                }
+            }
+        }
+    }
+
+    enum MainWindowPage
+    {
+        Start,
+        RectCapture,
+        WindowCapture,
+        Setting,
     }
 }

@@ -22,12 +22,6 @@ namespace Redefinable.Applications.EasyCapture.View
         public StartMainPanel()
         {
             InitializeComponent();
-
-            // イベントの初期化
-            this.RectCaptureButtonClick += delegate { };
-            this.WindowCaptureButtonClick += delegate { };
-            this.SettingButtonClick += delegate { };
-            this.ExitButtonClick += delegate { };
         }
 
 
