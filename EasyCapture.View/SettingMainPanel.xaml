@@ -15,6 +15,13 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="1*"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10"/>
@@ -25,8 +32,9 @@
         <Label Grid.Row="1" Grid.Column="1">
             キャプチャタイプ
         </Label>
-        <ComboBox Name="CaptureTypeComboBox" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" SelectedIndex="0" Grid.Row="2" Grid.Column="1">
+        <ComboBox Name="CaptureTypeComboBox" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" SelectedIndex="0" Grid.Row="2" Grid.Column="1">
             <ComboBoxItem Name="CaptureTypeComboBox_Movie">動画</ComboBoxItem>
+            <ComboBoxItem Name="CaptureTypeComboBox_MovieWithOutSound">動画 (音声なし)</ComboBoxItem>
             <ComboBoxItem Name="CaptureTypeComboBox_Picture">連続的な静止画</ComboBoxItem>
             <ComboBoxItem Name="CaptureTypeComboBox_SoundOnly">音声のみ</ComboBoxItem>
         </ComboBox>
@@ -45,6 +53,25 @@
                 参照(_R)
             </Button>
         </Grid>
+
+        <Label Grid.Row="7" Grid.Column="1">
+            出力ファイル名
+        </Label>
+        <ComboBox Name="FileNameTypeComboBox" HorizontalAlignment="Left" VerticalAlignment="Top" Width="300" SelectedIndex="0" Grid.Row="8" Grid.Column="1">
+            <ComboBoxItem Name="FileNameTypeComboBox_Normal">連番方式（EasyCapture_0000.拡張子）</ComboBoxItem>
+            <ComboBoxItem Name="FileNameTypeComboBox_DateTime">日時方式（EasyCapture_20xx-xx-xx_xx-xx-xx.拡張子）</ComboBoxItem>
+            <ComboBoxItem Name="FileNameTypeComboBox_Fixed">固定方式（EasyCapture.拡張子）</ComboBoxItem>
+        </ComboBox>
+
+        <Label Grid.Row="10" Grid.Column="1">
+            後処理コマンドライン
+        </Label>
+
+        <TextBox Grid.Row="11" Grid.Column="1"/>
+
+        <Label Grid.Row="12" Grid.Column="1">
+            変数：{Dir}=出力先ディレクトリ(末尾\なし), {FileName}=出力ファイル名
+        </Label>
 
     </Grid>
 </UserControl>
