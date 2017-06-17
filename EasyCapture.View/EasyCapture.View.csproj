@@ -108,5 +108,11 @@
   <ItemGroup>
     <Resource Include="Images\TestLogo.png" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EasyCapture.Models\EasyCapture.Models.csproj">
+      <Project>{4431fb33-4ef9-4678-8121-6410783cc55b}</Project>
+      <Name>EasyCapture.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

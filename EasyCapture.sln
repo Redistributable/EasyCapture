@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyCapture", "EasyCapture\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyCapture.View", "EasyCapture.View\EasyCapture.View.csproj", "{FA012759-B946-4939-8D35-157168CAE43D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyCapture.Models", "EasyCapture.Models\EasyCapture.Models.csproj", "{4431FB33-4EF9-4678-8121-6410783CC55B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{FA012759-B946-4939-8D35-157168CAE43D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FA012759-B946-4939-8D35-157168CAE43D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FA012759-B946-4939-8D35-157168CAE43D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4431FB33-4EF9-4678-8121-6410783CC55B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4431FB33-4EF9-4678-8121-6410783CC55B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4431FB33-4EF9-4678-8121-6410783CC55B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4431FB33-4EF9-4678-8121-6410783CC55B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

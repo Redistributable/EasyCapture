@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:Redefinable.Applications.EasyCapture.View"
              mc:Ignorable="d" 
              d:DesignHeight="40" d:DesignWidth="520" Height="40">
-    <Grid Background="White">
+    <Grid Background="#eaeaea">
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
             <ColumnDefinition Width="100" />

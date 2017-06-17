@@ -8,15 +8,43 @@
              d:DesignHeight="300" d:DesignWidth="520">
     <Grid Background="white">
         <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
-        <Label Grid.Row="0">
-            京成
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="10"/>
+        </Grid.ColumnDefinitions>
+        
+        <Label Grid.Row="1" Grid.Column="1">
+            キャプチャタイプ
         </Label>
+        <ComboBox Name="CaptureTypeComboBox" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" SelectedIndex="0" Grid.Row="2" Grid.Column="1">
+            <ComboBoxItem Name="CaptureTypeComboBox_Movie">動画</ComboBoxItem>
+            <ComboBoxItem Name="CaptureTypeComboBox_Picture">連続的な静止画</ComboBoxItem>
+            <ComboBoxItem Name="CaptureTypeComboBox_SoundOnly">音声のみ</ComboBoxItem>
+        </ComboBox>
+        
+        <Label Grid.Row="4" Grid.Column="1">
+            出力先ディレクトリ
+        </Label>
+        <Grid Grid.Row="5" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="110" />
+            </Grid.ColumnDefinitions>
+
+            <TextBox Grid.Column="0"/>
+            <Button Grid.Column="1" Margin="10,0,0,0">
+                参照(_R)
+            </Button>
+        </Grid>
+
     </Grid>
 </UserControl>

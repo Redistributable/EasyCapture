@@ -16,6 +16,8 @@ namespace Redefinable.Applications.EasyCapture
         [STAThread]
         public static void Main(string[] args)
         {
+            System.Windows.Forms.Application.EnableVisualStyles();
+
             /*
             TestWindow window = new TestWindow();
             Application app = new Application();

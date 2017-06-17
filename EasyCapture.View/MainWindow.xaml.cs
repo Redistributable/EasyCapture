@@ -21,11 +21,23 @@ namespace Redefinable.Applications.EasyCapture.View
     {
         private MainWindowPage currentPage;
         private int currentPageCount;
+        private bool isFinished;
+
+
+        /// <summary>
+        /// 終了ボタンにより閉じられたかどうかを示す値を取得します。
+        /// </summary>
+        public bool IsFinished
+        {
+            get { return this.isFinished; }
+        }
 
 
         public MainWindow()
         {
             InitializeComponent();
+
+            this.WindowStartupLocation = WindowStartupLocation.CenterOwner;
 
             using (System.IO.MemoryStream ms = new System.IO.MemoryStream())
             {
@@ -35,10 +47,21 @@ namespace Redefinable.Applications.EasyCapture.View
                 this.Icon = BitmapFrame.Create(ms);
             }
 
+            this.Closing += MainWindow_Closing;
             this.WindowStartMainPanel.SettingButtonClick += WindowStartMainPanel_SettingButtonClick;
+            this.WindowStartMainPanel.ExitButtonClick += (sender, e) => { this.finish(); };
             this.WindowSubpageBottomBox.PrevButtonClick += WindowSubpageBottomBox_PrevButtonClick;
+            this.WindowSubpageBottomBox.ExitButtonClick += (sender, e) => { this.finish(); };
         }
 
+        private void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (!this.isFinished)
+                this.finish();
+
+            if (!this.isFinished)
+                e.Cancel = true;
+        }
 
         private void WindowStartMainPanel_SettingButtonClick(object sender, RoutedEventArgs e)
         {
@@ -48,6 +71,8 @@ namespace Redefinable.Applications.EasyCapture.View
             this.WindowSettingMainPanel.Visibility = Visibility.Visible;
 
             this.WindowSubpageBottomBox.Visibility = Visibility.Visible;
+
+            this.WindowTopPanel.Text = "キャプチャ設定";
 
             this.currentPage = MainWindowPage.Setting;
             this.currentPageCount++;
@@ -68,6 +93,7 @@ namespace Redefinable.Applications.EasyCapture.View
 
                 this.WindowSubpageBottomBox.Visibility = Visibility.Collapsed;
 
+                this.WindowTopPanel.Text = "";
                 this.currentPage = MainWindowPage.Start;
             }
             else
@@ -90,6 +116,22 @@ namespace Redefinable.Applications.EasyCapture.View
                     default:
                         throw new Exception("UIエラーが発生しました。ページモードの種類を示す値が正しくありません。");
                 }
+            }
+        }
+
+        private void finish()
+        {
+            if (MessageBox.Show(this, "終了してもよろしいですか", this.Title, MessageBoxButton.YesNo) != MessageBoxResult.Yes)
+                return;
+
+            this.isFinished = true;
+            try
+            {
+                this.Close();
+            }
+            catch (InvalidOperationException)
+            {
+                // dummy
             }
         }
     }
