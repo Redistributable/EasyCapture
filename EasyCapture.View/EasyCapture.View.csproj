@@ -50,6 +50,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="RectCaptureSelectToolWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="SettingMainPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -87,6 +91,9 @@
     <Compile Include="RectCaptureMainPanel.xaml.cs">
       <DependentUpon>RectCaptureMainPanel.xaml</DependentUpon>
     </Compile>
+    <Compile Include="RectCaptureSelectToolWindow.xaml.cs">
+      <DependentUpon>RectCaptureSelectToolWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SettingMainPanel.xaml.cs">
       <DependentUpon>SettingMainPanel.xaml</DependentUpon>
     </Compile>
@@ -116,6 +123,10 @@
     <Resource Include="Images\TestLogo.png" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\RedefinableLibraries\Redefinable\Redefinable\Redefinable.csproj">
+      <Project>{283b9c50-3ba4-4559-96dd-b83a567c84ed}</Project>
+      <Name>Redefinable</Name>
+    </ProjectReference>
     <ProjectReference Include="..\EasyCapture.Models\EasyCapture.Models.csproj">
       <Project>{4431fb33-4ef9-4678-8121-6410783cc55b}</Project>
       <Name>EasyCapture.Models</Name>

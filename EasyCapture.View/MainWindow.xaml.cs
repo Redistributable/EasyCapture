@@ -37,6 +37,7 @@ namespace Redefinable.Applications.EasyCapture.View
         {
             InitializeComponent();
 
+            this.ResizeMode = ResizeMode.CanMinimize | ResizeMode.CanResize;
             this.WindowStartupLocation = WindowStartupLocation.CenterOwner;
 
             using (System.IO.MemoryStream ms = new System.IO.MemoryStream())
