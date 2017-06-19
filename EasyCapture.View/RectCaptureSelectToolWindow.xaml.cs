@@ -56,7 +56,7 @@ namespace Redefinable.Applications.EasyCapture.View
 
         private void MainGrid_MouseMove(object sender, MouseEventArgs e)
         {
-            if (this.SelectRect.Visibility != Visibility.Visible || e.LeftButton == MouseButtonState.Pressed)
+            if (this.SelectRect.Visibility != Visibility.Visible || e.LeftButton != MouseButtonState.Pressed)
                 return;
 
             var point = e.GetPosition(this.SelectRect);
@@ -69,12 +69,12 @@ namespace Redefinable.Applications.EasyCapture.View
 
         private void MainGrid_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            throw new NotImplementedException();
+            this.Close();
         }
 
         
 
-        public RectCaptureSelectToolWindowResult ShowSelectWindow(Window owner)
+        public RectCaptureSelectToolWindowResult ShowSelectWindow()
         {
             System.Drawing.Image screenShot = WinForm.ScreenShotUtility.GetScreenShot();
             BitmapImage bitmapImage = new BitmapImage();
@@ -93,11 +93,11 @@ namespace Redefinable.Applications.EasyCapture.View
 
 
             this.BackImage.Source = bitmapImage;
-            this.Owner = owner;
+            //this.Owner = owner;
             this.ShowDialog();
 
-            Rect result = default(Rect);
-            
+            Rect result = new Rect(this.startX, this.startY, this.currentWidth, this.currentHeight);
+            return new RectCaptureSelectToolWindowResult(result, false);
         }
     }
 

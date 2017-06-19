@@ -55,7 +55,7 @@
             <Label Grid.Column="0">
                 左端から
             </Label>
-            <TextBox Grid.Column="1">
+            <TextBox Name="PositionXTextBox" Grid.Column="1">
                 0
             </TextBox>
             <Label Grid.Column="2">
@@ -65,7 +65,7 @@
             <Label Grid.Column="4">
                 上端から
             </Label>
-            <TextBox Grid.Column="5">
+            <TextBox Name="PositionYTextBox" Grid.Column="5">
                 0
             </TextBox>
             <Label Grid.Column="6">
@@ -75,7 +75,7 @@
             <Label Grid.Column="8">
                 幅
             </Label>
-            <TextBox Grid.Column="9">
+            <TextBox Name="WidthTextBox" Grid.Column="9">
                 0
             </TextBox>
             <Label Grid.Column="10">
@@ -85,14 +85,14 @@
             <Label Grid.Column="12">
                 高さ
             </Label>
-            <TextBox Grid.Column="13">
+            <TextBox Name="HeightTextBox" Grid.Column="13">
                 0
             </TextBox>
             <Label Grid.Column="14">
                 px
             </Label>
 
-            <Button Grid.Column="17" Width="100">
+            <Button Name="SelectToolButton" Grid.Column="17" Width="100">
                 画面選択ツール
             </Button>
         </Grid>

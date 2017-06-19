@@ -22,6 +22,19 @@ namespace Redefinable.Applications.EasyCapture.View
         public RectCaptureMainPanel()
         {
             InitializeComponent();
+
+            this.SelectToolButton.Click += SelectToolButton_Click;
+        }
+
+        private void SelectToolButton_Click(object sender, RoutedEventArgs e)
+        {
+            RectCaptureSelectToolWindow tWin = new RectCaptureSelectToolWindow();
+            var result = tWin.ShowSelectWindow();
+
+            this.PositionXTextBox.Text = result.Rectangle.X.ToString();
+            this.PositionYTextBox.Text = result.Rectangle.Y.ToString();
+            this.WidthTextBox.Text = result.Rectangle.Width.ToString();
+            this.HeightTextBox.Text = result.Rectangle.Height.ToString();
         }
     }
 }
