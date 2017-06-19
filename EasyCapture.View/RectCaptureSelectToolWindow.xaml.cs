@@ -24,6 +24,7 @@ namespace Redefinable.Applications.EasyCapture.View
         private double startY;
         private double currentWidth;
         private double currentHeight;
+        private bool cancel;
 
         
 
@@ -35,10 +36,13 @@ namespace Redefinable.Applications.EasyCapture.View
             this.startY = 0;
             this.currentWidth = 0;
             this.currentHeight = 0;
+            this.cancel = false;
 
             this.MainGrid.MouseLeftButtonDown += MainGrid_MouseLeftButtonDown;
             this.MainGrid.MouseMove += MainGrid_MouseMove;
             this.MainGrid.MouseLeftButtonUp += MainGrid_MouseLeftButtonUp;
+
+            this.KeyDown += RectCaptureSelectToolWindow_KeyDown;
         }
 
         private void MainGrid_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -63,8 +67,16 @@ namespace Redefinable.Applications.EasyCapture.View
             this.currentWidth = point.X;
             this.currentHeight = point.Y;
 
-            this.SelectRect.Width = point.X;
-            this.SelectRect.Height = point.Y;
+            try
+            {
+                this.SelectRect.Width = point.X;
+                this.SelectRect.Height = point.Y;
+            }
+            catch
+            {
+                this.SelectRect.Width = 0;
+                this.SelectRect.Height = 0;
+            }
         }
 
         private void MainGrid_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
@@ -72,7 +84,16 @@ namespace Redefinable.Applications.EasyCapture.View
             this.Close();
         }
 
-        
+        private void RectCaptureSelectToolWindow_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Escape)
+            {
+                this.cancel = true;
+                this.Close();
+            }
+        }
+
+
 
         public RectCaptureSelectToolWindowResult ShowSelectWindow()
         {
@@ -97,7 +118,7 @@ namespace Redefinable.Applications.EasyCapture.View
             this.ShowDialog();
 
             Rect result = new Rect(this.startX, this.startY, this.currentWidth, this.currentHeight);
-            return new RectCaptureSelectToolWindowResult(result, false);
+            return new RectCaptureSelectToolWindowResult(result, this.cancel);
         }
     }
 
