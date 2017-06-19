@@ -54,6 +54,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="RectCaptureSelectToolWindowMessagePanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="SettingMainPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -93,6 +97,9 @@
     </Compile>
     <Compile Include="RectCaptureSelectToolWindow.xaml.cs">
       <DependentUpon>RectCaptureSelectToolWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RectCaptureSelectToolWindowMessagePanel.xaml.cs">
+      <DependentUpon>RectCaptureSelectToolWindowMessagePanel.xaml</DependentUpon>
     </Compile>
     <Compile Include="SettingMainPanel.xaml.cs">
       <DependentUpon>SettingMainPanel.xaml</DependentUpon>
