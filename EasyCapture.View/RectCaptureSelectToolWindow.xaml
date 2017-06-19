@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300" ResizeMode="NoResize" WindowState="Maximized" WindowStyle="None" Topmost="True">
     <Grid Name="MainGrid">
-        <Image HorizontalAlignment="Left" VerticalAlignment="Top"/>
-        <Rectangle Fill="#667EB6E4" HorizontalAlignment="Left" Height="100" Stroke="#FF4A8EC7" VerticalAlignment="Top" Width="100" Visibility="Hidden"/>
+        <Image Name="BackImage" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <Rectangle Name="SelectRect"  Fill="#667EB6E4" HorizontalAlignment="Left" Height="100" Stroke="#FF4A8EC7" VerticalAlignment="Top" Width="100" Visibility="Hidden"/>
     </Grid>
 </Window>

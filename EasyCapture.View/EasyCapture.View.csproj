@@ -131,6 +131,10 @@
       <Project>{4431fb33-4ef9-4678-8121-6410783cc55b}</Project>
       <Name>EasyCapture.Models</Name>
     </ProjectReference>
+    <ProjectReference Include="..\EasyCapture.View.WinForm\EasyCapture.View.WinForm.csproj">
+      <Project>{f40b1a4f-6d72-4047-9285-e2320c0bf604}</Project>
+      <Name>EasyCapture.View.WinForm</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
