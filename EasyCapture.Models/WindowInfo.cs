@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+using win32 = Redefinable.Applications.EasyCapture.Models.WindowInfoInteropMethods;
+
+
 namespace Redefinable.Applications.EasyCapture.Models
 {
     public class WindowInfo
     {
         // 非公開フィールド
         private string name;
-        private int handle;
+        private IntPtr handle;
 
         private int positionX;
         private int positionY;
@@ -26,7 +29,7 @@ namespace Redefinable.Applications.EasyCapture.Models
             get { return this.name; }
         }
 
-        public int Handle
+        public IntPtr Handle
         {
             get { return this.handle; }
         }
@@ -56,5 +59,63 @@ namespace Redefinable.Applications.EasyCapture.Models
         {
             get { return this.children; }
         }
+
+
+        // コンストラクタ
+        
+        public WindowInfo(string name, IntPtr handle, int positionX, int positionY, int width, int height, ICollection<WindowInfo> children)
+        {
+            this.name = name;
+            this.handle = handle;
+            this.positionX = positionX;
+            this.positionY = positionY;
+            this.width = width;
+            this.height = height;
+
+            this.children = new List<WindowInfo>();
+            this.children.AddRange(children);
+        }
+        
+
+        // 静的メソッド
+
+        public static ICollection<WindowInfo> GetAllWindows()
+        {
+            List<WindowInfo> windows = new List<WindowInfo>();
+            win32.EnumWindows(new win32.EnumWindowsDelegate((hWnd, lparam) =>
+            {
+                int titleLength = win32.GetWindowTextLength(hWnd);
+                if (0 < titleLength)
+                {
+                    // タイトル
+                    StringBuilder sb_title = new StringBuilder(titleLength + 1);
+                    win32.GetWindowText(hWnd, sb_title, sb_title.Capacity);
+
+                    // クラス名
+                    StringBuilder sb_class = new StringBuilder(1024);
+                    win32.GetClassName(hWnd, sb_class, sb_class.Capacity);
+
+                    // 位置と大きさ
+                    win32.RECT rect = new win32.RECT();
+                    win32.GetWindowRect(hWnd, ref rect);
+
+
+                    windows.Add(new WindowInfo(
+                        sb_title.ToString(),
+                        hWnd,
+                        rect.left,
+                        rect.top,
+                        rect.right - rect.left,
+                        rect.bottom - rect.top,
+                        new WindowInfo[0]));
+                }
+
+                return true;
+            }), IntPtr.Zero);
+
+            return windows;
+        }
     }
+
+    
 }

@@ -50,6 +50,7 @@ namespace Redefinable.Applications.EasyCapture.View
 
             this.Closing += MainWindow_Closing;
             this.WindowStartMainPanel.RectCaptureButtonClick += WindowStartMainPanel_RectCaptureButtonClick;
+            this.WindowStartMainPanel.WindowCaptureButtonClick += WindowStartMainPanel_WindowCaptureButtonClick;
             this.WindowStartMainPanel.SettingButtonClick += WindowStartMainPanel_SettingButtonClick;
             this.WindowStartMainPanel.ExitButtonClick += (sender, e) => { this.finish(); };
             this.WindowSubpageBottomBox.PrevButtonClick += WindowSubpageBottomBox_PrevButtonClick;
@@ -76,6 +77,13 @@ namespace Redefinable.Applications.EasyCapture.View
 
             this.currentPage = MainWindowPage.RectCapture;
             this.currentPageCount++;
+        }
+
+        private void WindowStartMainPanel_WindowCaptureButtonClick(object sender, RoutedEventArgs e)
+        {
+            ICollection<Models.WindowInfo> test = Models.WindowInfo.GetAllWindows();
+            foreach (var item in test)
+                Console.WriteLine("{0}:{1:0000}x{2:0000}", item.Name.PadRight(20), item.Width, item.Height);
         }
 
         private void WindowStartMainPanel_SettingButtonClick(object sender, RoutedEventArgs e)
