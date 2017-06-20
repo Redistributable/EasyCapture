@@ -18,6 +18,7 @@
 
         <local:StartMainPanel x:Name="WindowStartMainPanel" Grid.Row="1" />
         <local:RectCaptureMainPanel x:Name="WindowRectCaptureMainPanel" Grid.Row="1" Visibility="Hidden" />
+        <local:WindowCapturePanel x:Name="WindowWindowCapturePanel" Grid.Row="1" Visibility="Hidden"/>
         <local:SettingMainPanel x:Name="WindowSettingMainPanel" Grid.Row="1" Visibility="Hidden" />
 
         <local:SubpageBottomBox x:Name="WindowSubpageBottomBox" Grid.Row="2" Visibility="Collapsed"/>

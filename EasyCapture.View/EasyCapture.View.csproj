@@ -74,6 +74,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="WindowCapturePanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="XamlTest\TestControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -112,6 +116,9 @@
     </Compile>
     <Compile Include="TopPanel.xaml.cs">
       <DependentUpon>TopPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WindowCapturePanel.xaml.cs">
+      <DependentUpon>WindowCapturePanel.xaml</DependentUpon>
     </Compile>
     <Compile Include="XamlTest\TestControl.xaml.cs">
       <DependentUpon>TestControl.xaml</DependentUpon>

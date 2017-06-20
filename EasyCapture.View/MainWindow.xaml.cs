@@ -81,9 +81,24 @@ namespace Redefinable.Applications.EasyCapture.View
 
         private void WindowStartMainPanel_WindowCaptureButtonClick(object sender, RoutedEventArgs e)
         {
-            ICollection<Models.WindowInfo> test = Models.WindowInfo.GetAllWindows();
+            this.WindowStartMainPanel.Visibility = Visibility.Hidden;
+            this.WindowWindowCapturePanel.Visibility = Visibility.Visible;
+
+            this.WindowSubpageBottomBox.Visibility = Visibility.Visible;
+
+            this.WindowTopPanel.Text = "ウィンドウを指定してキャプチャ";
+
+            this.currentPage = MainWindowPage.WindowCapture;
+            this.currentPageCount++;
+
+
+
+
+
+
+            ICollection<Models.WindowInfo> test = Models.WindowInfo.GetAllActiveWindows();
             foreach (var item in test)
-                Console.WriteLine("{0}:{1:0000}x{2:0000}", item.Name.PadRight(20), item.Width, item.Height);
+                Console.WriteLine("{0}:({1:0000},{2:0000}) {3:0000}x{4:0000}", item.Name.PadRight(30), item.PositionX, item.PositionY, item.Width, item.Height);
         }
 
         private void WindowStartMainPanel_SettingButtonClick(object sender, RoutedEventArgs e)
@@ -113,6 +128,7 @@ namespace Redefinable.Applications.EasyCapture.View
                 this.WindowStartMainPanel.Visibility = Visibility.Visible;
 
                 this.WindowRectCaptureMainPanel.Visibility = Visibility.Hidden;
+                this.WindowWindowCapturePanel.Visibility = Visibility.Hidden;
                 this.WindowSettingMainPanel.Visibility = Visibility.Hidden;
 
                 this.WindowSubpageBottomBox.Visibility = Visibility.Collapsed;

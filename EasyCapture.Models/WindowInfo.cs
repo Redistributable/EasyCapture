@@ -79,6 +79,11 @@ namespace Redefinable.Applications.EasyCapture.Models
 
         // 静的メソッド
 
+        public static ICollection<WindowInfo> GetAllActiveWindows()
+        {
+            return GetAllWindows().Where(item => item.width * item.height >= 2).ToArray();
+        }
+
         public static ICollection<WindowInfo> GetAllWindows()
         {
             List<WindowInfo> windows = new List<WindowInfo>();
