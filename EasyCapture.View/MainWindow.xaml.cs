@@ -93,12 +93,13 @@ namespace Redefinable.Applications.EasyCapture.View
 
 
 
+            this.WindowWindowCapturePanel.UpdateWindowInformations();
 
-
-
+            /*
             ICollection<Models.WindowInfo> test = Models.WindowInfo.GetAllActiveWindows();
             foreach (var item in test)
                 Console.WriteLine("{0}:({1:0000},{2:0000}) {3:0000}x{4:0000}", item.Name.PadRight(30), item.PositionX, item.PositionY, item.Width, item.Height);
+            */
         }
 
         private void WindowStartMainPanel_SettingButtonClick(object sender, RoutedEventArgs e)

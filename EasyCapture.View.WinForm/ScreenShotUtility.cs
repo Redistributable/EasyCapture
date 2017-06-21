@@ -10,21 +10,43 @@ namespace Redefinable.Applications.EasyCapture.View.WinForm
 {
     public static class ScreenShotUtility
     {
+        public static ScreenShotType DefaultScreenShotType
+        {
+            get;
+            set;
+        }
+
+
+        static ScreenShotUtility()
+        {
+            DefaultScreenShotType = ScreenShotType.Managed;
+        }
+
+
+
         public static Image GetScreenShot()
         {
-            return GetScreenShot(ScreenShotType.Managed);
+            return GetScreenShot(DefaultScreenShotType);
         }
 
         public static Image GetScreenShot(ScreenShotType type)
+        {
+            Size displaySize = new Size(
+                Screen.PrimaryScreen.Bounds.Width, 
+                Screen.PrimaryScreen.Bounds.Height );
+
+            return GetScreenShot(type, new Point(0, 0), displaySize);
+        }
+
+        public static Image GetScreenShot(ScreenShotType type, Point location, Size size)
         {
             Image resultImage = null;
 
             if (type == ScreenShotType.Managed)
             {
-                Bitmap bmp = new Bitmap(Screen.PrimaryScreen.Bounds.Width,
-                    Screen.PrimaryScreen.Bounds.Height);
+                Bitmap bmp = new Bitmap(size.Width, size.Height);
                 Graphics g = Graphics.FromImage(bmp);
-                g.CopyFromScreen(new Point(0, 0), new Point(0, 0), bmp.Size);
+                g.CopyFromScreen(location, new Point(0, 0), size);
                 g.Dispose();
 
                 resultImage = bmp;
@@ -35,6 +57,11 @@ namespace Redefinable.Applications.EasyCapture.View.WinForm
             }
 
             return resultImage;
+        }
+
+        public static Image GetCroppedScreenShot(int x, int y, int width, int height)
+        {
+            return GetScreenShot(DefaultScreenShotType, new Point(x, y), new Size(width, height));
         }
     }
 

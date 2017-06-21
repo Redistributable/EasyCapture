@@ -7,6 +7,30 @@
              mc:Ignorable="d" 
              d:DesignHeight="350" d:DesignWidth="520">
     <Grid Background="White">
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="10"/>
+            
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="10"/>
+            
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="10"/>
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Row="0" Grid.Column="1">
+            キャプチャするウィンドウを選択してください。
+        </Label>
+        <ComboBox Name="WindowsComboBox" Grid.Row="1" Grid.Column="1">
+        </ComboBox>
+
+        <Label Grid.Row="3" Grid.Column="1">ウィンドウのプレビュー</Label>
+        <Image Name="PreviewImage" Grid.Row="4" Grid.Column="1"/>
     </Grid>
 </UserControl>
