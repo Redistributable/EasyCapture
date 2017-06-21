@@ -55,6 +55,10 @@ namespace Redefinable.Applications.EasyCapture.View
             else
             {
                 WindowInfo info = ((WindowItemInfo)selected).WindowInfo;
+
+                if (info.Width == 0 || info.Height == 0)
+                    throw new Exception(info.Name + "は高さまたは幅が0です。");
+
                 var screenShot = WinForm.ScreenShotUtility.GetCroppedScreenShot(info.PositionX, info.PositionY, info.Width, info.Height);
                 BitmapImage bitmapImage = new BitmapImage();
 
@@ -85,13 +89,15 @@ namespace Redefinable.Applications.EasyCapture.View
             this.WindowsComboBox.Items.Clear();
             
             this.windowInformations = WindowInfo.GetAllActiveWindows();
+            //Console.WriteLine(" ==  Informations == ");
             foreach (var item in this.windowInformations)
             {
                 this.WindowsComboBox.Items.Add(new WindowItemInfo(item, false));
+                //Console.WriteLine("\"{0}\"=x:{1},y:{2},w:{3},h:{4}", item.Name, item.PositionX, item.PositionY, item.Width, item.Height);
                 foreach (var subItem in item.Children)
                 {
                     this.WindowsComboBox.Items.Add(new WindowItemInfo(subItem, true));
-                    
+                    //Console.WriteLine(">> \"{0}\"=x:{1},y:{2},w:{3},h:{4}", subItem.Name, subItem.PositionX, subItem.PositionY, subItem.Width, subItem.Height);
                 }
             }
         }
