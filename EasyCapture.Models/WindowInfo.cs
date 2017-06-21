@@ -105,6 +105,83 @@ namespace Redefinable.Applications.EasyCapture.Models
                     win32.GetWindowRect(hWnd, ref rect);
 
 
+
+
+                    // 子ウィンドウの情報取得
+                    List<WindowInfo> childWindows = new List<WindowInfo>();
+                    win32.EnumChildWindows(hWnd, new win32.EnumWindowsDelegate((childHWnd, childLParam) =>
+                    {
+                        int childTitleLength = win32.GetWindowTextLength(childHWnd);
+                        StringBuilder child_sb_title = new StringBuilder("unknown");
+
+                        if (0 < childTitleLength)
+                        {
+                            // タイトル
+                            child_sb_title = new StringBuilder(childTitleLength + 1);
+                            win32.GetWindowText(childHWnd, child_sb_title, child_sb_title.Capacity);
+                        }
+
+                        // クラス名
+                        StringBuilder child_sb_class = new StringBuilder(1024);
+                        win32.GetClassName(childHWnd, child_sb_class, child_sb_class.Capacity);
+                        if (child_sb_title.ToString() == "unknown")
+                            child_sb_title = new StringBuilder("unknown (" + child_sb_class.ToString() + ")");
+
+                        // 位置と大きさ
+                        win32.RECT childRect = new win32.RECT();
+                        win32.GetWindowRect(childHWnd, ref childRect);
+
+
+                        // 孫ウィンドウの情報取得
+                        List<WindowInfo> gs1Windows = new List<WindowInfo>();
+                        /*
+                        win32.EnumChildWindows(childHWnd, new win32.EnumWindowsDelegate((gs1HWnd, gs1LParam) =>
+                        {
+                            int gs1TitleLength = win32.GetWindowTextLength(childHWnd);
+                            StringBuilder gs1_sb_title = new StringBuilder("unknown");
+
+                            if (0 < gs1TitleLength)
+                            {
+                                // タイトル
+                                gs1_sb_title = new StringBuilder(gs1TitleLength + 1);
+                                win32.GetWindowText(gs1HWnd, gs1_sb_title, gs1_sb_title.Capacity);
+                            }
+
+                            // クラス名
+                            StringBuilder gs1_sb_class = new StringBuilder(1024);
+                            win32.GetClassName(gs1HWnd, gs1_sb_class, gs1_sb_class.Capacity);
+
+                            // 位置と大きさ
+                            win32.RECT gs1Rect = new win32.RECT();
+                            win32.GetWindowRect(gs1HWnd, ref gs1Rect);
+
+                            gs1Windows.Add(new WindowInfo(
+                                gs1_sb_title.ToString(),
+                                gs1HWnd,
+                                gs1Rect.left,
+                                gs1Rect.top,
+                                gs1Rect.right - gs1Rect.left,
+                                gs1Rect.bottom - gs1Rect.top,
+                                gs1Windows));
+
+                            return true;
+                        }), IntPtr.Zero);
+                        */
+
+
+                        childWindows.Add(new WindowInfo(
+                            child_sb_title.ToString(),
+                            childHWnd,
+                            childRect.left,
+                            childRect.top,
+                            childRect.right - childRect.left,
+                            childRect.bottom - childRect.top,
+                            gs1Windows));
+                        
+                        return true;
+                    }), IntPtr.Zero);
+
+
                     windows.Add(new WindowInfo(
                         sb_title.ToString(),
                         hWnd,
@@ -112,7 +189,7 @@ namespace Redefinable.Applications.EasyCapture.Models
                         rect.top,
                         rect.right - rect.left,
                         rect.bottom - rect.top,
-                        new WindowInfo[0]));
+                        childWindows));
                 }
 
                 return true;

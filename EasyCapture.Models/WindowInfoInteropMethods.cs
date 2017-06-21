@@ -15,6 +15,10 @@ namespace Redefinable.Applications.EasyCapture.Models
         [return: MarshalAs(UnmanagedType.Bool)]
         public extern static bool EnumWindows(EnumWindowsDelegate lpEnumFunc, IntPtr lparam);
 
+        [DllImport("user32.dll")]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        public extern static bool EnumChildWindows(IntPtr hWnd, EnumWindowsDelegate lpEnumFunc, IntPtr lparam);
+
         [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
         public static extern int GetWindowText(IntPtr hWnd, StringBuilder lpString, int nMaxCount);
 

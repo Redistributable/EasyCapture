@@ -40,8 +40,41 @@ namespace Redefinable.Applications.EasyCapture.View
         {
             InitializeComponent();
 
+            this.WindowsComboBox.SelectionChanged += WindowsComboBox_SelectionChanged;
+
             this.UpdateWindowInformations();
             this.WindowsComboBox.SelectedIndex = 0;
+            
+        }
+
+        private void WindowsComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Object selected = this.WindowsComboBox.SelectedItem;
+            if (selected == null)
+                this.PreviewImage.Source = null;
+            else
+            {
+                WindowInfo info = ((WindowItemInfo)selected).WindowInfo;
+                var screenShot = WinForm.ScreenShotUtility.GetCroppedScreenShot(info.PositionX, info.PositionY, info.Width, info.Height);
+                BitmapImage bitmapImage = new BitmapImage();
+
+                using (System.IO.MemoryStream ms = new System.IO.MemoryStream())
+                {
+                    screenShot.Save(ms, System.Drawing.Imaging.ImageFormat.Bmp);
+                    ms.Seek(0, System.IO.SeekOrigin.Begin);
+
+                    bitmapImage.BeginInit();
+                    bitmapImage.StreamSource = ms;
+                    bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
+                    bitmapImage.EndInit();
+                    bitmapImage.Freeze();
+                }
+
+
+                this.PreviewImage.Source = bitmapImage;
+            }
+
+            //Console.WriteLine(this.WindowsComboBox.SelectedItem);
         }
 
         /// <summary>
@@ -53,7 +86,14 @@ namespace Redefinable.Applications.EasyCapture.View
             
             this.windowInformations = WindowInfo.GetAllActiveWindows();
             foreach (var item in this.windowInformations)
-                this.WindowsComboBox.Items.Add(new WindowItemInfo(item));
+            {
+                this.WindowsComboBox.Items.Add(new WindowItemInfo(item, false));
+                foreach (var subItem in item.Children)
+                {
+                    this.WindowsComboBox.Items.Add(new WindowItemInfo(subItem, true));
+                    
+                }
+            }
         }
 
 
@@ -61,6 +101,7 @@ namespace Redefinable.Applications.EasyCapture.View
         {
             // 非公開フィールド
             private WindowInfo windowInfo;
+            private bool isSubWindow;
 
 
             // 公開プロパティ
@@ -70,12 +111,18 @@ namespace Redefinable.Applications.EasyCapture.View
                 get { return this.windowInfo; }
             }
 
+            public bool IsSubWindow
+            {
+                get { return this.isSubWindow; }
+            }
+
 
             // コンストラクタ
 
-            public WindowItemInfo(WindowInfo windowInfo)
+            public WindowItemInfo(WindowInfo windowInfo, bool isSubWindow)
             {
                 this.windowInfo = windowInfo;
+                this.isSubWindow = isSubWindow;
             }
 
 
@@ -88,6 +135,9 @@ namespace Redefinable.Applications.EasyCapture.View
 
                 if (name.Length >= max)
                     name = name.Substring(0, max) + " ...";
+
+                if (this.isSubWindow)
+                    name = "# " + name;
 
                 return name;
             }
