@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:Redefinable.Applications.EasyCapture.View"
              mc:Ignorable="d"
              d:DesignHeight="350" d:DesignWidth="520" Width="520" Height="350" MinWidth="520" MinHeight="350" MaxWidth="700" MaxHeight="500"
-             ResizeMode="CanMinimize">
+             ResizeMode="CanMinimize" Title="EasyCapture">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>

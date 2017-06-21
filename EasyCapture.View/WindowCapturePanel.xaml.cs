@@ -40,10 +40,11 @@ namespace Redefinable.Applications.EasyCapture.View
         {
             InitializeComponent();
 
+            this.ComboBoxRefreshButton.Click += (sender, e) => { this.UpdateWindowInformations(); };
             this.WindowsComboBox.SelectionChanged += WindowsComboBox_SelectionChanged;
 
             this.UpdateWindowInformations();
-            this.WindowsComboBox.SelectedIndex = 0;
+            this.WindowsComboBox.SelectedIndex = 1;
             
         }
 
