@@ -11,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 using Redefinable.Applications.EasyCapture.Models;
 
@@ -24,6 +25,7 @@ namespace Redefinable.Applications.EasyCapture.View
     {
         // 非公開フィールド
         ICollection<WindowInfo> windowInformations;
+        DispatcherTimer dispatcherTimer;
 
 
         // 公開プロパティ
@@ -45,10 +47,26 @@ namespace Redefinable.Applications.EasyCapture.View
 
             this.UpdateWindowInformations();
             this.WindowsComboBox.SelectedIndex = 1;
-            
+
+            this.dispatcherTimer = new DispatcherTimer();
+            this.dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, 100);
+            this.dispatcherTimer.Tick += DispatcherTimer_Tick;
+            this.dispatcherTimer.Start();
         }
 
         private void WindowsComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            //this.updatePreviewImage();
+            //Console.WriteLine(this.WindowsComboBox.SelectedItem);
+        }
+
+        private void DispatcherTimer_Tick(object sender, EventArgs e)
+        {
+            if (this.Visibility == Visibility.Visible)
+                this.updatePreviewImage();
+        }
+
+        private void updatePreviewImage()
         {
             Object selected = this.WindowsComboBox.SelectedItem;
             if (selected == null)
@@ -78,8 +96,6 @@ namespace Redefinable.Applications.EasyCapture.View
 
                 this.PreviewImage.Source = bitmapImage;
             }
-
-            //Console.WriteLine(this.WindowsComboBox.SelectedItem);
         }
 
         /// <summary>

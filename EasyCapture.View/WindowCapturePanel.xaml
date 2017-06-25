@@ -17,6 +17,7 @@
             <RowDefinition Height="10"/>
 
             <RowDefinition Height="auto"/>
+            <RowDefinition Height="10"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10"/>
@@ -38,5 +39,7 @@
 
         <Label Grid.Row="3" Grid.Column="1">ウィンドウのプレビュー</Label>
         <Image Name="PreviewImage" Grid.Row="4" Grid.Column="1"/>
+
+        <Button Name="StartCaptureButton" Grid.Row="6" Grid.Column="1" Width="150" HorizontalAlignment="Center">キャプチャ開始</Button>
     </Grid>
 </UserControl>
