@@ -68,6 +68,13 @@ namespace Redefinable.Applications.EasyCapture.View
 
         private void updatePreviewImage()
         {
+            if (this.PreviewImage.Source != null)
+            {
+                //var currentImage = this.PreviewImage.Source;
+                this.PreviewImage.Source = null;
+            }
+
+
             Object selected = this.WindowsComboBox.SelectedItem;
             if (selected == null)
                 this.PreviewImage.Source = null;

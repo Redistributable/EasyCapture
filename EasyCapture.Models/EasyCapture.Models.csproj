@@ -40,8 +40,17 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CaptureManager.cs" />
     <Compile Include="WindowInfo.cs" />
     <Compile Include="WindowInfoInteropMethods.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="FFmpeg, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\EmergenceGuardian.FFmpeg.1.0.1\lib\net40\FFmpeg.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
